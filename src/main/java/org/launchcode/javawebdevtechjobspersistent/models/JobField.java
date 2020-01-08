@@ -1,16 +1,23 @@
 package org.launchcode.javawebdevtechjobspersistent.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.Objects;
 
+@Entity
 public abstract class JobField {
+
+    @Id
+    @GeneratedValue
     private int id;
-    private static int nextId = 1;
+    //private static int nextId = 1;
     private String value;
 
     // Constructor assigns a unique ID number to each new object.
     public JobField() {
-        id = nextId;
-        nextId++;
+//        id = nextId;
+//        nextId++;
     }
 
     // Constructor that takes a string as a parameter and assigns it to the 'value' field, and also

@@ -21,7 +21,8 @@ public class Job {
     private String employer;
     private String location;
     private String positionType;
-    
+
+
     private String coreCompetency;
 
     public Job() {
