@@ -1,26 +1,38 @@
 package org.launchcode.javawebdevtechjobspersistent.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Objects;
 
+@Entity
 public class Job {
 
+    @Id
+    @GeneratedValue
     private int id;
-    private static int nextId = 1;
 
+    @NotNull
+    @Size(min=3, max=15)
     private String name;
-    private Employer employer;
-    private Location location;
-    private PositionType positionType;
-    private CoreCompetency coreCompetency;
 
-    // Initialize a unique ID.
+    private String employer;
+    private String location;
+    private String positionType;
+    
+    private String coreCompetency;
+
     public Job() {
-        id = nextId;
-        nextId++;
+    }
+
+    public Job(String name) {
+        this.name = name;
     }
 
     // Initialize the id and value fields.
-    public Job(String aName, Employer anEmployer, Location aLocation, PositionType aPositionType, CoreCompetency aCoreCompetency) {
+    public Job(String aName, String anEmployer, String aLocation, String aPositionType, String aCoreCompetency) {
         this();
         name = aName;
         employer = anEmployer;
@@ -36,17 +48,17 @@ public class Job {
         if (name.equals("")){
             name = "Data not available";
         }
-        if (employer.getValue().equals("") || employer.getValue() == null){
-            employer.setValue("Data not available");
+        if (employer.equals("") || employer == null){
+            employer = "Data not available";
         }
-        if (location.getValue().equals("") || location.getValue() == null){
-            location.setValue("Data not available");
+        if (location.equals("") || location == null){
+            location = "Data not available";
         }
-        if (coreCompetency.getValue().equals("") || coreCompetency.getValue() == null){
-            coreCompetency.setValue("Data not available");
+        if (coreCompetency.equals("") || coreCompetency == null){
+            coreCompetency = "Data not available";
         }
-        if (positionType.getValue().equals("") || positionType.getValue() == null){
-            positionType.setValue("Data not available");
+        if (positionType.equals("") || positionType == null){
+            positionType = "Data not available";
         }
 
         output = String.format("\nID: %d\n" +
@@ -87,35 +99,35 @@ public class Job {
         this.name = name;
     }
 
-    public Employer getEmployer() {
+    public String getEmployer() {
         return employer;
     }
 
-    public void setEmployer(Employer employer) {
+    public void setEmployer(String employer) {
         this.employer = employer;
     }
 
-    public Location getLocation() {
+    public String getLocation() {
         return location;
     }
 
-    public void setLocation(Location location) {
+    public void setLocation(String location) {
         this.location = location;
     }
 
-    public PositionType getPositionType() {
+    public String getPositionType() {
         return positionType;
     }
 
-    public void setPositionType(PositionType positionType) {
+    public void setPositionType(String positionType) {
         this.positionType = positionType;
     }
 
-    public CoreCompetency getCoreCompetency() {
+    public String getCoreCompetency() {
         return coreCompetency;
     }
 
-    public void setCoreCompetency(CoreCompetency coreCompetency) {
+    public void setCoreCompetency(String coreCompetency) {
         this.coreCompetency = coreCompetency;
     }
 }
