@@ -5,14 +5,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Objects;
 
-@Entity
 public abstract class JobField {
 
-    @Id
-    @GeneratedValue
     private int id;
     //private static int nextId = 1;
     private String value;
+    private String name;
 
     // Constructor assigns a unique ID number to each new object.
     public JobField() {
@@ -30,7 +28,10 @@ public abstract class JobField {
     // Custom toString() method that returns the data stored in 'value'.
     @Override
     public String toString() {
-        return value;
+        if(!value.isEmpty()) {
+            return value;
+        }
+        return name;
     }
 
     // Custom equals and hashCode methods. Two objects are "equal" when their id fields match.

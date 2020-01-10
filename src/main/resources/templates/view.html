@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+<h1 th:text="${job.name}">Default Title</h1>
+
+<nav th:replace="fragments :: page-header"></nav>
+
+<ul>
+    <li>
+        Name: <p th:text="${job.name}"></p>
+    </li>
+    <li>
+        ID: <p th:text="${job.id}"></p>
+    </li>
+    <li>
+        Employer: <p th:text="${job.employer.name}"></p>
+    </li>
+</ul>
+
+
+</body>
+</html>

@@ -12,13 +12,14 @@
     <h2>View jobs:</h2>
     <ul>
         <li th:each="job : ${jobs}">
-            <p th:text="${job.name}"></p>
+            <a th:href="@{'/view/' + ${job.id}}" th:text="${job.name}"></a>
         </li>
     </ul>
-    <h2>Add jobs:</h2>
-    <a th:href="@{'/add'}">Add Jobs</a>
-    <h2>Add employers:</h2>
-    <a th:href="@{'/employers/add'}">Add Employers</a>
+    <ul>
+        <li><a th:href="@{'/add'}">Add Jobs</a></li>
+        <li><a th:href="@{'/employers/add'}">Add Employers</a></li>
+        <li><a th:href="@{'/corecompetencies/add'}">Add Skills</a></li>
+    </ul>
 
 </div>
 
