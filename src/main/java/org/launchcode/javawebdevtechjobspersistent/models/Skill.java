@@ -17,6 +17,10 @@ public class Skill extends JobField {
     @Size(min=3, max=15)
     private String name;
 
+    @NotNull
+    @Size(min=3, max=250)
+    private String description;
+
     @ManyToMany(mappedBy="skills")
     private List<Job> jobs = new ArrayList<>();
 
@@ -44,4 +48,11 @@ public class Skill extends JobField {
         return jobs;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

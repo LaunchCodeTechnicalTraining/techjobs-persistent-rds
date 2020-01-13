@@ -1,15 +1,13 @@
 package org.launchcode.javawebdevtechjobspersistent.controllers;
 
 import org.launchcode.javawebdevtechjobspersistent.models.Employer;
+import org.launchcode.javawebdevtechjobspersistent.models.Job;
 import org.launchcode.javawebdevtechjobspersistent.models.data.EmployerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -47,5 +45,13 @@ public class EmployerController {
 
         employerRepository.save(newEmployer);
         return "redirect:";
+    }
+
+    @GetMapping("view/{employerId}")
+    public String displayViewEmployer(Model model, @PathVariable int employerId) {
+
+        Employer employer = employerRepository.findById(employerId).orElse(new Employer());
+        model.addAttribute("employer", employer);
+        return "employers/view";
     }
 }
