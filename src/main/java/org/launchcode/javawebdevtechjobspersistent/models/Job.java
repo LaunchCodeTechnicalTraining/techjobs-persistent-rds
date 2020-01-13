@@ -21,52 +21,21 @@ public class Job {
     @ManyToOne
     private Employer employer;
 
-    // private String positionType;
-
-//    @ManyToMany(mappedBy = "jobs")
-//    private List<CoreCompetency> coreCompetencies;
+    @ManyToMany
+    private List<Skill> skills;
 
     public Job() {
     }
 
-//    public Job(String name) {
-//        this.name = name;
-//    }
 
     // Initialize the id and value fields.
-    public Job(String aName, Employer anEmployer) {
+    public Job(String aName, Employer anEmployer, List<Skill> someSkills) {
         this();
         name = aName;
         employer = anEmployer;
-//        positionType = aPositionType;
-//        coreCompetencies = someCoreCompetencies;
+        skills = someSkills;
     }
 
-    // Custom toString method.
-//    @Override
-//    public String toString(){
-//        String output = "";
-//        if (name.equals("")){
-//            name = "Data not available";
-//        }
-//        if (location.equals("") || location == null){
-//            location = "Data not available";
-//        }
-//        if (coreCompetency.equals("") || coreCompetency == null){
-//            coreCompetency = "Data not available";
-//        }
-//        if (positionType.equals("") || positionType == null){
-//            positionType = "Data not available";
-//        }
-//
-//        output = String.format("\nID: %d\n" +
-//                "Name: %s\n" +
-//                "Employer: %s\n" +
-//                "Location: %s\n" +
-//                "Position Type: %s\n" +
-//                "Core Competency: %s\n", id, name, employer, location, positionType, coreCompetency);
-//        return output;
-//    }
 
     // Custom equals and hashCode methods. Two Job objects are "equal" when their id fields match.
     @Override
@@ -105,19 +74,12 @@ public class Job {
         this.employer = employer;
     }
 
-//    public String getPositionType() {
-//        return positionType;
-//    }
-//
-//    public void setPositionType(String positionType) {
-//        this.positionType = positionType;
-//    }
-//
-//    public List<CoreCompetency> getCoreCompetencies() {
-//        return coreCompetencies;
-//    }
-//
-//    public void setCoreCompetencies(List<CoreCompetency> coreCompetencies) {
-//        this.coreCompetencies = coreCompetencies;
-//    }
+    public Iterable<Skill> getSkills() {
+        return skills;
+    }
+
+    public void setSkills(List<Skill> skills) {
+        this.skills = skills;
+    }
+
 }

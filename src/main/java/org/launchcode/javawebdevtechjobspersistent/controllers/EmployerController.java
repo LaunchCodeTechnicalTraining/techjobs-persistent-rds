@@ -1,8 +1,7 @@
 package org.launchcode.javawebdevtechjobspersistent.controllers;
 
 import org.launchcode.javawebdevtechjobspersistent.models.Employer;
-import org.launchcode.javawebdevtechjobspersistent.models.JobField;
-import org.launchcode.javawebdevtechjobspersistent.models.data.EmployerDao;
+import org.launchcode.javawebdevtechjobspersistent.models.data.EmployerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,12 +18,12 @@ import javax.validation.Valid;
 public class EmployerController {
 
     @Autowired
-    private EmployerDao employerDao;
+    private EmployerRepository employerRepository;
 
     @RequestMapping("")
     public String index(Model model) {
 
-        model.addAttribute("employers", employerDao.findAll());
+        model.addAttribute("employers", employerRepository.findAll());
         model.addAttribute("title", "Employers");
 
         return "employers/index";
@@ -34,7 +33,6 @@ public class EmployerController {
     public String displayAddEmployerForm(Model model) {
         model.addAttribute("title", "Add Employer");
         model.addAttribute(new Employer());
-        //model.addAttribute("categories", jobDao.findAll());
         return "employers/add";
     }
 
@@ -47,9 +45,7 @@ public class EmployerController {
             return "employers/add";
         }
 
-        //Category cat = categoryDao.findById(categoryId).orElse(new Category());
-        //newCheese.setCategory(cat);
-        employerDao.save(newEmployer);
+        employerRepository.save(newEmployer);
         return "redirect:";
     }
 }

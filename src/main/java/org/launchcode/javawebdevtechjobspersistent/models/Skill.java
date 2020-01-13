@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class CoreCompetency extends JobField {
+public class Skill extends JobField {
 
     @Id
     @GeneratedValue
@@ -17,13 +17,13 @@ public class CoreCompetency extends JobField {
     @Size(min=3, max=15)
     private String name;
 
-    @ManyToMany
+    @ManyToMany(mappedBy="skills")
     private List<Job> jobs = new ArrayList<>();
 
-    public CoreCompetency() {
+    public Skill() {
     }
 
-    public CoreCompetency(@NotNull @Size(min = 3, max = 15) String name) {
+    public Skill(@NotNull @Size(min = 3, max = 15) String name) {
         this.name = name;
     }
 
@@ -43,9 +43,5 @@ public class CoreCompetency extends JobField {
     public List<Job> getJobs() {
         return jobs;
     }
-
-    //    public CoreCompetency(String value) {
-//        super(value);
-//    }
 
 }

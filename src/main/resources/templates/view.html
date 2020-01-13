@@ -2,22 +2,43 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
 
-<body class="container">
+<body class="container  body-content">
 <h1 th:text="${job.name}">Default Title</h1>
 
 <nav th:replace="fragments :: page-header"></nav>
 
-<ul>
-    <li>
-        Name: <p th:text="${job.name}"></p>
-    </li>
-    <li>
-        ID: <p th:text="${job.id}"></p>
-    </li>
-    <li>
-        Employer: <p th:text="${job.employer.name}"></p>
-    </li>
-</ul>
+<div class="job-listing">
+    <p th:text="${'ID: ' + job.id}"></p>
+    <p th:text="${'Name: ' + job.name}"></p>
+    <p th:text="${'Employer: ' + job.employer.name}"></p>
+    <p> Skills:
+        <ul>
+            <li th:each="skill : ${job.skills}">
+                <p th:text="${skill.name}"></p>
+            </li>
+        </ul>
+    </p>
+</div>
+
+<!--<ul>-->
+<!--    <li>-->
+<!--        Name: <p th:text="${job.name}"></p>-->
+<!--    </li>-->
+<!--    <li>-->
+<!--        ID: <p th:text="${job.id}"></p>-->
+<!--    </li>-->
+<!--    <li>-->
+<!--        Employer: <p th:text="${job.employer.name}"></p>-->
+<!--    </li>-->
+<!--    <li>-->
+<!--        Skills:-->
+<!--        <ul>-->
+<!--            <li th:each="skill : ${job.skills}">-->
+<!--                <p th:text="${skill.name}"></p>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--    </li>-->
+<!--</ul>-->
 
 
 </body>
