@@ -7,15 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Employer extends JobField {
-
-    @Id
-    @GeneratedValue
-    private int id;
-
-    @NotNull
-    @Size(min=3, max=15)
-    private String name;
+public class Employer extends AbstractEntity {
 
     @NotNull
     @Size(min=3, max=15)
@@ -26,23 +18,6 @@ public class Employer extends JobField {
     private List<Job> jobs = new ArrayList<>();
 
     public Employer() {
-    }
-
-    public Employer(@NotNull @Size(min = 3, max = 15) String name) {
-        this.name = name;
-    }
-
-    @Override
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getLocation() {
