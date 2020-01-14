@@ -14,7 +14,10 @@
     <table class="job-listing">
         <tr th:each="job : ${jobs}">
             <td>
-                <p th:text="${'ID: ' + job.id}"></p>
+                <p>
+                    Job Id:
+                    <a th:href="@{'/view/' + ${job.id}}" th:text="${job.id}"></a>
+                </p>
                 <p th:text="${'Name: ' + job.name}"></p>
                 <p>
                     Employer:
