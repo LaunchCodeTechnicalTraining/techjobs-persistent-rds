@@ -24,14 +24,12 @@ public class SkillController {
     public String index(Model model) {
 
         model.addAttribute("skills", skillRepository.findAll());
-        model.addAttribute("title", "Skills");
 
         return "skills/index";
     }
 
     @GetMapping("add")
     public String displayAddSkillForm(Model model) {
-        model.addAttribute("title", "Add Skill");
         model.addAttribute("skill", new Skill());
         return "skills/add";
     }
@@ -41,7 +39,6 @@ public class SkillController {
                                          Errors errors, Model model) {
 
         if (errors.hasErrors()) {
-            model.addAttribute("title", "Add Skill");
             return "skills/add";
         }
 
@@ -60,9 +57,5 @@ public class SkillController {
         } else {
             return "redirect:../";
         }
-
-//        Skill skill = skillRepository.findById(skillId).orElse(new Skill());
-//        model.addAttribute("skill", skill);
-//        return "skills/view";
     }
 }
