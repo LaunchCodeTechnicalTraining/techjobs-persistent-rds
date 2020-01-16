@@ -69,7 +69,7 @@ public class HomeController {
     public String displayViewJob(Model model, @PathVariable int jobId) {
 
         Optional optJob = jobRepository.findById(jobId);
-        if (optJob.isPresent()) {
+        if (!optJob.isEmpty()) {
             Job job = (Job) optJob.get();
             model.addAttribute("job", job);
             return "view";
