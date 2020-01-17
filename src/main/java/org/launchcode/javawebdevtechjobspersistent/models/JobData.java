@@ -51,8 +51,6 @@ public class JobData {
             theValue = job.getName();
         } else if (fieldName.equals("employer")){
             theValue = job.getEmployer().toString();
-        } else if (fieldName.equals("location")){
-            theValue = job.getEmployer().getLocation();
         } else {
             theValue = job.getSkills().toString();
         }
@@ -77,8 +75,6 @@ public class JobData {
             if (job.getName().toLowerCase().contains(value.toLowerCase())) {
                 results.add(job);
             } else if (job.getEmployer().toString().toLowerCase().contains(value.toLowerCase())) {
-                results.add(job);
-            } else if (job.getEmployer().getLocation().toLowerCase().contains(value.toLowerCase())) {
                 results.add(job);
             } else if (job.getSkills().toString().toLowerCase().contains(value.toLowerCase())) {
                 results.add(job);
