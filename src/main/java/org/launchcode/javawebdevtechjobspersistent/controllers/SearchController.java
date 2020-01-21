@@ -23,12 +23,6 @@ public class SearchController {
     @Autowired
     private JobRepository jobRepository;
 
-    @Autowired
-    private EmployerRepository employerRepository;
-
-    @Autowired
-    private SkillRepository skillRepository;
-
     @RequestMapping("")
     public String search(Model model) {
         model.addAttribute("columns", columnChoices);
